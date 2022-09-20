@@ -1,3 +1,4 @@
+from urllib import response
 import requests
 from flask import Flask
 import os
@@ -13,6 +14,7 @@ def get_gpt_response(text):
         url="https://hf.space/embed/singh5587/gpt-j-6b/+/api/predict ",
         json={"data": [text]},
     )
+
     response = r.json()
     return response["data"][0]
 

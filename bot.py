@@ -4,6 +4,8 @@ from telegram import ChatAction
 import os
 from app import get_gpt_response
 
+telegram_bot_token = '5533872077:AAHwJ-zkpfjWc1sVb1BHRQFci2DczTaEVGI'
+
 
 
 def hello(update: Update, context: CallbackContext) -> None:
@@ -25,7 +27,7 @@ def respond_to_user(update: Update, context: CallbackContext):
     update.message.reply_text(response_text)
 
 
-updater = Updater('5533872077:AAHwJ-zkpfjWc1sVb1BHRQFci2DczTaEVGI')
+updater = Updater(token=telegram_bot_token, use_context=True)
 updater.dispatcher.add_handler(CommandHandler('start', hello))
 updater.dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, respond_to_user))
 updater.start_polling()
